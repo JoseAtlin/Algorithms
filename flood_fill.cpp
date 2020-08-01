@@ -11,7 +11,7 @@ bool dfs(int x, int y) {
 	if (x < 0 || x >= n || y < 0 || y >= m) return false;
 	if (visited[x][y]) return false;
 	if (mat[x][y] == 'X') return false;
-    visited[x][y] = 1;
+	visited[x][y] = true;
 	if (dfs(x+1, y)) return true;
 	if (dfs(x, y+1)) return true;
 	if (dfs(x-1, y)) return true;
