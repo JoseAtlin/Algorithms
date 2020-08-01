@@ -4,7 +4,8 @@ using namespace std;
 const int mxn = 1e5;
 
 vector<int> adj[mxn];
-vector<bool> visited;
+vector<bool> visited(mxn, false);
+set<int> st;
 
 void dfs(int s) {
 	visited[s] = true;
@@ -21,11 +22,12 @@ int main() {
 		cin >> node1 >> node2;
 		adj[node1].push_back(node2);
 		adj[node2].push_back(node1);
+		st.insert(node1);
+		st.insert(node2);
 	}
 
 	int components = 0;
-	visited.assign(n, false);
-	for (int i=0; i<n; i++) {
+	for (auto i : st) {
 		if (!visited[i]) {
 			dfs(i);
 			components += 1;
