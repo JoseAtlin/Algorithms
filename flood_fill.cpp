@@ -7,7 +7,7 @@ vector<vector<char>> mat(100, vector<char>(100));
 
 
 bool dfs(int x, int y) {
-	if (x == n-1 && y == m-1) return true;
+	if (x == src_x && y == src_y) return true;
 	if (x < 0 || x >= n || y < 0 || y >= m) return false;
 	if (visited[x][y]) return false;
 	if (mat[x][y] == 'X') return false;
