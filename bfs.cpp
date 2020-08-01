@@ -6,6 +6,7 @@ const int mxn = 1e5;
 vector<int> adj[mxn];
 vector<bool> visited;
 vector<int> level(mxn);
+set<int> st;
 
 void bfs(int s) {
 	queue<int> que;
@@ -32,11 +33,13 @@ int main() {
 		cin >> node1 >> node2;
 		adj[node1].push_back(node2);
 		adj[node2].push_back(node1);
+		st.insert(node1);
+		st.insert(node2);
 	}
 	
 	visited.assign(n, false);
 	bfs(start_node);
 	cout << "node" << "\t" << "level" << "\n";
-	for (int i=0; i<n; i++)
+	for (auto i : st)
 		cout << i  << "\t"<< level[i] << "\n";
 }
